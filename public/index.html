@@ -8,15 +8,19 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="icon.ico" >
 </head>
 <body>
     <form id="chat">
+        <h1>
+            <i class="fa-solid fa-rocket" style="font-size: 1.5rem;"></i> Chat.io <span id="by"><a href="https://www.linkedin.com/in/paulo-pqueiroz/">by Paulo Queiroz</a></span>
+        </h1>
         <input type="text" name="username" placeholder="Digite seu usuário">
         <div class="messages"></div>
-        <input type="text" name="message" placeholder="Digite sua mensagem">
-        <button type="submit">Enviar</button>
+        <input type="text" name="message" placeholder="Digite sua mensagem" id="message">
+        <button type="submit">Enviar <i class="fa-solid fa-paper-plane"></i></button>
     </form>
 
     <script type="text/javascript">
@@ -25,7 +29,9 @@
         //Função que renderiza uma div com mensagens
         function renderMessage(message){
             $('.messages').append(
-                '<div class="message"><strong>' + message.author + '</strong>: ' + message.message + '</div>' 
+                `<div class="message">
+                    <strong><i class="fa-solid fa-user-astronaut"></i> ${message.author}</strong>: ${message.message}
+                </div>` 
             )
         }
 
@@ -47,16 +53,18 @@
 
             var author = $('input[name=username]').val()
             var message = $('input[name=message]').val()
-
+            let inputMessage = document.getElementById('message');
+            
             if(author.length && message.length){
                 var messageObject = {
                     author: author,
                     message: message,
                 }
-
+                
                 renderMessage(messageObject)
-
+                
                 socket.emit('sendMessage', messageObject)
+                inputMessage.value = '';
             }
         })
     </script>

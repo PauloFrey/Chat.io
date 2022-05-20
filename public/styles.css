@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    background-color: rgb(20, 20, 20);
   }
   
   * {
@@ -16,30 +17,69 @@ html, body {
     flex-direction: column;
   }
   
+  h1{
+    margin: 20px;
+    color: white;
+  }
+
+  #by{
+    font-size: 1.4rem;
+    color: rgb(172, 172, 172);
+  }
+  a{
+    text-decoration: none;
+    color: rgb(150, 150, 150);
+    transition: 0.7s;
+  }a:hover{
+    color: rgb(96, 46, 109);
+
+  }
+
   input {
     width: 600px;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(66, 66, 66);
     height: 50px;
     padding: 0 20px;
     font-size: 14px;
+    background-color: rgb(37, 37, 37);
+    color: white;
+    border-radius: 8px;
   }
   
   button {
-    width: 600px;
+    width: 200px;
     height: 50px;
     font-size: 14px;
-    background: #069;
+    background: rgb(73, 38, 82);
+    border: none;
+    cursor:pointer;
     text-align: center;
     line-height: 50px;
     font-weight: bold;
-    color: #FFF;
-    margin-top: 10px;
+    color: white;
+    margin: 20px 0 0 0;
+    border-radius: 8px;
+    transition: 0.7s;
+  }
+  button:hover{
+    background: rgb(123, 66, 138);
+
   }
   
   .messages {
     width: 600px;
     height: 400px;
     margin: 20px 0;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(66, 66, 66);
     padding: 20px;
+    border-radius: 8px;
+    background-color: rgb(37, 37, 37);
+  }
+
+  .message{
+    color: rgb(231, 231, 231);
+    padding: 10px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 5px;
+    margin: 14px;
   }

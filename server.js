@@ -17,7 +17,7 @@ app.use('/', (req, res) => {
 let messages = []
 
 io.on('connection', socket =>{
-    // console.log(`Socket conectado: ${socket.id}`)
+    console.log(`Socket conectado: ${socket.id}`)
 
     socket.emit('previousMessages', messages);
 
